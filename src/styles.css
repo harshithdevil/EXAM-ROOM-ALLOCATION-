@@ -1,0 +1,23 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+@theme inline {
+  --color-background: var(--background); --color-foreground: var(--foreground); --color-card: var(--card); --color-card-foreground: var(--foreground); --color-popover: var(--card); --color-popover-foreground: var(--foreground); --color-primary: var(--primary); --color-primary-foreground: var(--primary-foreground); --color-secondary: var(--secondary); --color-secondary-foreground: var(--foreground); --color-muted: var(--muted); --color-muted-foreground: var(--muted-foreground); --color-accent: var(--accent); --color-accent-foreground: var(--foreground); --color-destructive: var(--destructive); --color-destructive-foreground: var(--foreground); --color-border: var(--border); --color-input: var(--border); --color-ring: var(--primary); --color-ring-offset-background: var(--background); --color-success: var(--success); --color-warning: var(--warning); --color-surface: var(--surface); --font-sans: 'DM Sans', sans-serif; --font-display: 'Space Grotesk', sans-serif;
+}
+:root { --background: oklch(.165 .023 235); --foreground: oklch(.95 .012 210); --card: oklch(.208 .024 235); --surface: oklch(.234 .026 235); --primary: oklch(.78 .134 183); --primary-foreground: oklch(.15 .03 220); --secondary: oklch(.27 .03 230); --muted: oklch(.255 .02 231); --muted-foreground: oklch(.69 .025 224); --accent: oklch(.28 .055 192); --border: oklch(.33 .025 229); --destructive: oklch(.72 .16 20); --success: oklch(.77 .13 155); --warning: oklch(.82 .13 85); --radius: .4rem; }
+* { box-sizing: border-box; border-color: var(--border); }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: 'DM Sans', sans-serif; letter-spacing: 0; }
+button,input,select { font: inherit; }
+button { cursor: pointer; }
+::selection { background: var(--primary); color: var(--primary-foreground); }
+@utility panel { background: var(--card); border: 1px solid var(--border); border-radius: 6px; }
+@utility input-field { background: var(--background); border: 1px solid var(--border); border-radius: 4px; outline: none; color: var(--foreground); min-height: 40px; padding: 0 12px; width: 100%; &:focus { border-color: var(--primary); box-shadow: 0 0 0 2px color-mix(in oklab,var(--primary) 18%,transparent); } }
+@utility graph-surface { background-color: var(--background); background-image: radial-gradient(color-mix(in oklab,var(--primary) 12%,transparent) 1px, transparent 1px); background-size: 24px 24px; }
+@utility soft-glow { box-shadow: 0 0 46px color-mix(in oklab,var(--primary) 10%,transparent); }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes breathe { 50% { box-shadow: 0 0 22px color-mix(in oklab,var(--primary) 40%,transparent); } }
+@utility animate-rise { animation: rise .55s both; }
+@utility animate-breathe { animation: breathe 3s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
